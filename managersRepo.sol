@@ -23,7 +23,7 @@ contract Owner is Manager{
 
 contract ManagersRepo{
     Manager[] managers = new Manager[](0);
-    function isOwner(address _ownerAddress)view public returns(bool){
+    function isOwnerByAddress(address _ownerAddress)view public returns(bool){
         if(getOwner()==_ownerAddress){
             return true;
         }
@@ -39,7 +39,7 @@ contract ManagersRepo{
         return address(0);
     }
 
-    function isManager(address _managerAddress) view public returns(bool){
+    function isManagerByAddress(address _managerAddress) view public returns(bool){
         for(uint256 i = 0; i < managers.length; i++){
             if(managers[i].getManagerAddress()==_managerAddress){
                 return true;
@@ -56,16 +56,16 @@ contract ManagersRepo{
         return addresses;
     }
 
-    function addManager(address _manager)public{
-        require(isManager(msg.sender),"you are not manager. addManager function is allowed for manager.");
-        require(!isManager(_manager),"He is already manager.");
+    function addManagerByAddress(address _manager)public{
+        require(isManagerByAddress(msg.sender),"you are not manager. addManager function is allowed for manager.");
+        require(!isManagerByAddress(_manager),"He is already manager.");
         Manager manager = new Manager(_manager);
         managers.push(manager);
     }
 
-    function deleteManager(address _manager)public{
-        require(isManager(msg.sender),"You are not manager. deleteManager function is allowed for manager.");
-        require(!isOwner(_manager),"Owner can not be deleted. use changeOwner function to delete original owner and generate new one.");
+    function deleteManagerByAddress(address _manager)public{
+        require(isManagerByAddress(msg.sender),"You are not manager. deleteManager function is allowed for manager.");
+        require(!isOwnerByAddress(_manager),"Owner can not be deleted. use changeOwner function to delete original owner and generate new one.");
         uint256 i = 0;
         for(; i < managers.length; i++){
             if(managers[i].getManagerAddress()==_manager){
@@ -76,9 +76,9 @@ contract ManagersRepo{
         }
         require(false,"not found him in manager list");
     }
-    function changeOwner(address _owner)public{
-        require(!isManager(_owner),"He is already manager. Before use this function, you must delete him from managers list.(use deleteManager function!)");
-        require(isOwner(msg.sender),"You are not owner. changeOwner function is allowed for owner.");
+    function changeOwnerByAddress(address _owner)public{
+        require(!isManagerByAddress(_owner),"He is already manager. Before use this function, you must delete him from managers list.(use deleteManager function!)");
+        require(isOwnerByAddress(msg.sender),"You are not owner. changeOwner function is allowed for owner.");
         Owner owner = new Owner(_owner);
         for(uint256 i = 0; i < managers.length; ++i){
             if(managers[i].isOwner()){

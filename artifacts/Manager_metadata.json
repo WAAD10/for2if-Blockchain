@@ -56,7 +56,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"managersRepo.sol": "Manager"
+			"forif_contract_flattened.sol": "Manager"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -70,12 +70,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"managersRepo.sol": {
-			"keccak256": "0x8370cba52125cfff913176f3023fbd4fee4e812b3e0416c5364afc820779e349",
+		"forif_contract_flattened.sol": {
+			"keccak256": "0x075ac09d6e003826b694bc2c86355d19159211b49f0efa4ac366b6a8b7644d47",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4888ebfb1facc37b22f45e10f06dde1d617735e5db00a6b3f46a40c9b6ece6aa",
-				"dweb:/ipfs/QmbUwMcbBvw7evQHEJG6NxrRWNEDcJzRHTAF8REt2CPD2F"
+				"bzz-raw://281fea446d7216224cc7d6e9bc9eed8f622c32a7b9fc74d65903956e4c242382",
+				"dweb:/ipfs/QmauSDNEwtjN1mapdutNw4QwvVEJQjwKWGtdfsknWRfAwv"
 			]
 		}
 	},

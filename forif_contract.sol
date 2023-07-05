@@ -15,7 +15,7 @@ contract Forif_contract is ERC721URIStorage,ManagersRepo {
         public
         returns (uint256)
     {
-        require(isManager(msg.sender));
+        require(isManagerByAddress(msg.sender));
         uint256 newCertification = _tokenIds.current();
         _mint(_user, newCertification);
         _setTokenURI(newCertification, tokenURI);
